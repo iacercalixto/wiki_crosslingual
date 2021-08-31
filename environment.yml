@@ -1,0 +1,26 @@
+name: base
+channels:
+  - defaults
+dependencies:
+  - conda=4.9.2=py38h06a4308_0
+  - pip=20.2.4=py38h06a4308_0
+  - python=3.8.5=h7579374_1
+  - setuptools=50.3.1=py38h06a4308_1
+  - six=1.15.0=py38h06a4308_0
+  - sqlite=3.33.0=h62c20be_0
+  - tqdm=4.51.0=pyhd3eb1b0_0
+  - urllib3=1.25.11=py_0
+  - yaml=0.2.5=h7b6447c_0
+  - zlib=1.2.11=h7b6447c_3
+  - pip:
+    - h5py==2.10.0
+    - ipython==7.19.0
+    - jsonschema==3.2.0
+    - numpy==1.19.5
+    - tensorboard==2.4.0
+    - tensorflow==2.4.0
+    - tokenizers==0.9.4
+    - torch==1.7.1
+    - torchvision==0.8.2
+    - transformers==4.1.1
+
