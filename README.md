@@ -12,6 +12,7 @@ Please use [this link](https://drive.google.com/#file) to download the preproces
 
 Extract the tarballs and store all gzipped files in a directory of your preference.
 
+Before running the example below, remember to create the subdirectory `./save_path`.
 
 ## Example
 
@@ -27,7 +28,7 @@ Finally, set the environment variable `${DATA_PATH}` with the location of the gz
 	    --language_codes_file_mlm ./languages-en.txt \
 	    --model_type xlm-roberta \
 	    --model_name_or_path xlm-roberta-large \
-	    --hidden_dim 768 \
+	    --hidden_dim 1024 \
 	    --path_save save_path/Model_xlm-roberta-large_train-with-mlm_finetune-two-transformer-layers_token_en_languages. \
 	    --train_path_english_mlm ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.mlm.txt.gz.shuf.gz \
 	    --train_with_mlm \

@@ -75,11 +75,11 @@ class MMModel_ReplaceCLS10Percent_WithDataParallel(nn.Module):
                 #param.requires_grad = False
                 match = re.search( "lm_head", param_name )
                 if match is None:
-                    print( "NOT finetuning ", param_name )
+                    #print( "NOT finetuning ", param_name )
                     param.requires_grad = False
                 else:
                     # always finetune the LM head
-                    print( "finetuning ", param_name )
+                    #print( "finetuning ", param_name )
                     param.requires_grad = True
 
 

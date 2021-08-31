@@ -39,9 +39,9 @@ class MMModel_ConcatCLS_WithDataParallel(nn.Module):
         # transformer layers split in half
         layers_idxs_half = split_list( layers_idxs )
 
-        #print(layers_idxs)
-        #print(layers_idxs_two)
-        #print(layers_idxs_half)
+        #print("layers_idxs: ", layers_idxs)
+        #print("layers_idxs_two: ", layers_idxs_two)
+        #print("layers_idxs_half: ", layers_idxs_half)
 
         for param_name, param in self.model.named_parameters():
             match = re.search( ".+layer.(\d+)", param_name )
@@ -73,11 +73,11 @@ class MMModel_ConcatCLS_WithDataParallel(nn.Module):
             else:
                 match = re.search( "lm_head", param_name )
                 if match is None:
-                    print( "NOT finetuning ", param_name )
+                    #print( "NOT finetuning ", param_name )
                     param.requires_grad = False
                 else:
                     # always finetune the LM head
-                    print( "finetuning ", param_name )
+                    #print( "finetuning ", param_name )
                     param.requires_grad = True
 
 
