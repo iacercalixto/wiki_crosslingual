@@ -28,8 +28,8 @@ Finally, set the environment variable `${DATA_PATH}` with the location of the gz
 
 	python -u trainHL_word_m2_xlm_multiple_languages_data_parallel.py \
 	    --train_path_english ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.txt.gz \
-	    --language_codes_file ./languages-en.txt \
-	    --language_codes_file_mlm ./languages-en.txt \
+	    --language_codes_file languages/languages-en.txt \
+	    --language_codes_file_mlm languages/languages-en.txt \
 	    --model_type xlm-roberta \
 	    --model_name_or_path xlm-roberta-large \
 	    --hidden_dim 1024 \
