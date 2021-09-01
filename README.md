@@ -26,7 +26,7 @@ Before doing that we need to set a few environment variables. The first variable
 
 Finally, set the environment variable `${DATA_PATH}` with the location of the gzipped files above, the environment variable `${SAVE_EVERY}` to the number of model updates used to periodically save the model, and run:
 
-	python -u trainHL_word_m2_xlm_multiple_languages_data_parallel.py \
+	python -u train_entity_prediction.py \
 	    --train_path_english ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.txt.gz \
 	    --language_codes_file languages/languages-en.txt \
 	    --language_codes_file_mlm languages/languages-en.txt \
@@ -48,7 +48,7 @@ Finally, set the environment variable `${DATA_PATH}` with the location of the gz
 
 In order to train a ReplaceCLS entity prediction model (see paper for details) on 100 Wikipedia languages, run:
 
-	python -u trainHL_word_m2_xlm_multiple_languages_data_parallel.py \
+	python -u train_entity_prediction.py \
 	    --train_path_english ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.txt.gz \
 	    --train_path_other_languages ${DATA_PATH}/ \
 	    --language_codes_file languages/languages-XLMR-all.txt \
