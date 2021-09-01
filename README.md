@@ -46,6 +46,32 @@ Finally, set the environment variable `${DATA_PATH}` with the location of the gz
 	    1>&2 | tee -a console.xlm-roberta-large.train-with-mlm.finetune-two-transformer-layers.token.lr5e5.en_languages.txt
 
 
+In order to train a ReplaceCLS entity prediction model (see paper for details) on 100 Wikipedia languages, run:
+
+	python -u trainHL_word_m2_xlm_multiple_languages_data_parallel.py \
+	    --train_path_english ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.txt.gz \
+	    --train_path_other_languages ${DATA_PATH}/ \
+	    --language_codes_file languages/languages-XLMR-all.txt \
+	    --language_codes_file_mlm languages/languages-XLMR-all.txt \
+	    --model_type xlm-roberta \
+	    --model_name_or_path xlm-roberta-large \
+	    --hidden_dim 1024 \
+	    --path_save save_path/Model_xlm-roberta-large_train-with-mlm_finetune-two-transformer-layers_replace_cls_100_languages. \
+	    --train_path_english_mlm ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.mlm.txt.gz.shuf.gz \
+	    --train_path_other_languages_mlm ${DATA_PATH}/ \
+	    --train_with_mlm \
+	    --hyperlink_model_type replace_cls \
+	    --batch_size ${BATCH_SIZE} \
+	    --gradient_accumulation_steps ${G_ACC_STEPS} \
+	    --finetune_two_transformer_layers \
+	    --gpu_ids 0 \
+	    --save_every ${SAVE_EVERY} \
+	    1>&2 | tee -a console.xlm-roberta-large.train-with-mlm.finetune-two-transformer-layers.replace_cls.lr5e5.100_languages.txt
+
+
+To see all available training options, use the `--help` flag.
+
+
 ## Citing our work
 
 If you find our paper and/or this codebase useful, please consider citing our work:
