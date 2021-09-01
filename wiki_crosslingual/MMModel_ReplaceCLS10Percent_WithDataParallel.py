@@ -84,32 +84,6 @@ class MMModel_ReplaceCLS10Percent_WithDataParallel(nn.Module):
 
 
 
-    #def finetune_all_layers(self):
-    #    for param_name, param in self.model.named_parameters():
-    #        param.requires_grad = True
-    #        # if parameter is one of the transformer layers
-    #        #if not re.search( ".+layer.\d+", param_name ) is None:
-    #        #    param.requires_grad = True
-    #        #else:
-    #        #    param.requires_grad = False
-
-
-    #def forward(self, targets, input_ids, attention_mask, token_type_ids, train=True):
- 
-    #    # XLM type model that do not need token_type_ids
-    #    if type(token_type_ids) == type(None):
-    #        outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
-    #    else:
-    #        # BERT type model with token_type_ids
-    #        outputs = self.model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
-    #        #pooler_output = outputs[1]  # (batch_size, hidden_size) # CLS of BERT
-
-    #    # last_hidden_states: [batch, seq_len, features]
-    #    last_hidden_states = outputs[0]
-    #    # cls_token_batch: [batch, 1, features]
-    #    cls_tokens_batch = last_hidden_states[:,0,:]
-    #    return last_hidden_states, cls_tokens_batch
-
     def forward(self, targets, input_ids, attention_mask, token_type_ids, input_ids_labels, task="WikipediaHyperlinkPrediction"):
         assert( task in ["MLM", "WikipediaHyperlinkPrediction"] )
 

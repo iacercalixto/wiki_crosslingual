@@ -7,30 +7,27 @@ import random
 import time
 from datetime import datetime, timedelta
 import torch.nn as nn
+from torch.utils.data import DataLoader
 import numpy as np
 import torch
+import itertools
 import re
 
 from transformers.data.data_collator import DataCollatorForLanguageModeling
-from MMModel_WithDataParallel import MMModel_WithDataParallel
-from MMModel_ConcatCLS_WithDataParallel import MMModel_ConcatCLS_WithDataParallel
-from MMModel_ReplaceCLS10Percent_WithDataParallel import MMModel_ReplaceCLS10Percent_WithDataParallel
-#from MMModel import MMModel
-#from MMModel_ConcatCLS import MMModel_ConcatCLS
-#from MMModel_ReplaceCLS10Percent import MMModel_ReplaceCLS10Percent
-from DataWIKI import DataWIKI
-from DataWIKI_MLM import DataWIKI_MLM
-from torch.utils.data import DataLoader
-import itertools
-
-# We broke up the model in two classes: BERT backbone can be DataParallel'ed, HyperlinkPredictionHead can't
-from Token_HyperlinkPredictionHead import Token_HyperlinkPredictionHead
-from ConcatCLS_HyperlinkPredictionHead import ConcatCLS_HyperlinkPredictionHead
-from ReplaceCLS10Percent_HyperlinkPredictionHead import ReplaceCLS10Percent_HyperlinkPredictionHead
-
-from sampling_probability import get_sampling_probability_from_counts
 from transformers import BertModel, XLMModel, XLMRobertaModel, XLMRobertaForMaskedLM, XLMRobertaTokenizer, XLMRobertaConfig
 from transformers import AdamW, get_constant_schedule, get_linear_schedule_with_warmup, PreTrainedModel
+
+# We broke up the model in two classes: BERT backbone can be DataParallel'ed, HyperlinkPredictionHead can't
+from wiki_crosslingual.Token_HyperlinkPredictionHead import Token_HyperlinkPredictionHead
+from wiki_crosslingual.ConcatCLS_HyperlinkPredictionHead import ConcatCLS_HyperlinkPredictionHead
+from wiki_crosslingual.ReplaceCLS10Percent_HyperlinkPredictionHead import ReplaceCLS10Percent_HyperlinkPredictionHead
+from wiki_crosslingual.MMModel_WithDataParallel import MMModel_WithDataParallel
+from wiki_crosslingual.MMModel_ConcatCLS_WithDataParallel import MMModel_ConcatCLS_WithDataParallel
+from wiki_crosslingual.MMModel_ReplaceCLS10Percent_WithDataParallel import MMModel_ReplaceCLS10Percent_WithDataParallel
+from wiki_crosslingual.DataWIKI import DataWIKI
+from wiki_crosslingual.DataWIKI_MLM import DataWIKI_MLM
+
+from wiki_crosslingual.sampling_probability import get_sampling_probability_from_counts
 
 
 MODEL_CLASSES = {
