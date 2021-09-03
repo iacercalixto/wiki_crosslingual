@@ -8,9 +8,9 @@ Please use the `environment.yml` file to install all required packages using ana
 
 ## Data
 
-Please use [this link](https://drive.google.com/#file) to download the preprocessed and tokenized Wikipedia data we use to train our models with masked language modelling training, i.e., the file contains Wikipedia text without any markups to be used for MLM training. The file is a tarball containing a list of gzipped text files for each of the 100 Wikipedia languages used. Each line consists of Wikipedia text preprocessed for MLM training. The first field are prediction indices (index -100 is a mask not used in MLM), the second field is the attention mask used in BERT, and the fourth field denote the input text with randomly masked words. The third field is not used.
+Please use [this link](https://drive.google.com/file/d/1RAAmoJwowavwrFJt6DFl5oyOjYP3ure4/view?usp=sharing) to download the preprocessed and tokenized Wikipedia data we use to train our models with masked language modelling training, i.e., the file contains Wikipedia text without any markups to be used for MLM training. The file is a tarball containing a list of gzipped text files for each of the 100 Wikipedia languages used. Each line consists of Wikipedia text preprocessed for MLM training. The first field are prediction indices (index -100 is a mask not used in MLM), the second field is the attention mask used in BERT, and the fourth field denote the input text with randomly masked words. The third field is not used.
 
-Please use [this link](https://drive.google.com/#file) to download the preprocessed and tokenized Wikipedia data we used to train our models with entity prediction, i.e., the file contains sentences extracted from Wikipedia with internal hyperlinks to be used in entity prediction. The file is a tarball containing a list of gzipped text files for each of the 100 Wikipedia languages used. Each line consists of some text from Wikipedia and the hyperlinks targets for all mentions in the text. The first field denotes mention indices (spans) in the input text, the second field denotes the entity identifier each mention (in field 1) links to, the third field is the input text with randomly masked words, the fourth field is an attention mask to be used in BERT. The fifth field is not used.
+Please use [this link](https://drive.google.com/file/d/1kJR_ZqizESKoS2MUV_a5YGk5xzPDP5dW/view?usp=sharing) to download the preprocessed and tokenized Wikipedia data we used to train our models with entity prediction, i.e., the file contains sentences extracted from Wikipedia with internal hyperlinks to be used in entity prediction. The file is a tarball containing a list of gzipped text files for each of the 100 Wikipedia languages used. Each line consists of some text from Wikipedia and the hyperlinks targets for all mentions in the text. The first field denotes mention indices (spans) in the input text, the second field denotes the entity identifier each mention (in field 1) links to, the third field is the input text with randomly masked words, the fourth field is an attention mask to be used in BERT. The fifth field is not used.
 
 Extract the tarballs and store all gzipped files in a directory of your preference.
 
@@ -49,8 +49,8 @@ In order to train a ReplaceCLS entity prediction model (see paper for details) o
 	python -u train_entity_prediction.py \
 	    --train_path_english ${DATA_PATH}/wiki.en.links.top250K.idx.wordtok.xlmr.txt.gz \
 	    --train_path_other_languages ${DATA_PATH}/ \
-	    --language_codes_file languages/languages-XLMR-all.txt \
-	    --language_codes_file_mlm languages/languages-XLMR-all.txt \
+	    --language_codes_file languages/languages-100.txt \
+	    --language_codes_file_mlm languages/languages-100.txt \
 	    --model_type xlm-roberta \
 	    --model_name_or_path xlm-roberta-large \
 	    --hidden_dim 1024 \
