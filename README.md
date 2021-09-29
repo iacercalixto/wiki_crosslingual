@@ -71,7 +71,9 @@ To see all available training options, use the `--help` flag.
 
 ## Finetuning and Testing on WSD
 To test on the WSD task, one can follow the instructions at https://github.com/SapienzaNLP/xl-wsd-code
+### Finetuning
 Especially, one should take care of specifying the `--reload_checkopint` flag when running the training on SemCor, so as to load the weights of the pretrained model.
+### Evaluating
 Similarly, when evaluating, one should either specify the path to the model finetuned on the WSD task through the `--checkpoint_path` when calling the function `src/evaluation/evaluate_model.py` or the parameter in the config file as also extensively explained in the xl-wsd repository. 
 
 
